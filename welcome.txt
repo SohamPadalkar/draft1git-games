@@ -1,0 +1,11 @@
+Welcome to GitGames 🧠
+
+This isn't just a repository—it's a quest.
+Your terminal is your compass. Your commands, your sword.
+
+🔎 Task 1:
+Find the file named `challenge1.md`.
+Read it. Modify it. Commit it.
+Push your changes to unlock the next clue.
+
+Good luck, warrior.
