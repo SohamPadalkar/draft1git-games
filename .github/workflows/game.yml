@@ -1,0 +1,31 @@
+name: Unlock Level 2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  unlock:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Check last commit message
+      id: commit
+      run: |
+        COMMIT_MSG=$(git log -1 --pretty=%B)
+        echo "msg=$COMMIT_MSG" >> $GITHUB_OUTPUT
+
+    - name: Unlock Level 2
+      if: contains(steps.commit.outputs.msg, 'I am ready')
+      run: |
+        mkdir -p level2
+        base64 -d levels/level2.b64 > level2/challenge2.txt
+        git config user.name "gamebot"
+        git config user.email "gamebot@example.com"
+        git add level2/challenge2.txt
+        git commit -m "Level 2 Unlocked"
+        git push
